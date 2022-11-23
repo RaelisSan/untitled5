@@ -94,7 +94,7 @@ int RectangularMatrix::digitCount(Array *mat, int n, int m) {
     }
     return len;
 }
-int Matrix::Gauss(int n, int m) {
+int RectangularMatrix::Gauss(int n, int m) {
     n = rank;
     m=n+1;
     int j = n;

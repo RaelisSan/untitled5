@@ -136,49 +136,18 @@ void Matrix::transpose()  {
 }
 
 
-/*oid Matrix::Gauss(Matrix *mat, int i, int m) {
-    m=i+1;
-    float *xx = new float [i];
-    int k, j, d, r, l;
-    for (l = 0; l<i; l++)
-    {
-        d = matrix[l].get(l);
-        for (j = i; j >= l; j--)
-            d = matrix[l].get(j)/d;
-        for (j = l + 1; j<i; j++)
-        {
-            d = matrix[j].get(l);
-            for (k = i; k >= l; k--)
-                r = matrix[j].get(k);
-            r = r - d*matrix[l].get(k);
-        }
-    }
-    xx[m-1] = matrix[m - 1].get(m);
-    for (i = i - 2; l >= 0; l--)
-    {
-        xx[l] = matrix[l].get(m);
-        for (j = l + 1; j<i; j++)
-            xx[l] -= matrix[l].get(j) * xx[l];
-    }
-    for (l = 0; l<i; l++)
-        cout << xx[l] << " ";
-    cout << xx[l]<< endl;
-}*/
-
 int Matrix::Gauss(int n, int m) {
     n = rank;
-    m=n+1;
+    m = n + 1;
     int j = n;
-    float *xx = new float [m];
+    float *xx = new float[m];
     int k, i, d, r, t;
-    for (i = 0; i<n; i++)
-    {
+    for (i = 0; i < n; i++) {
         d = matrix[i]->get(i);
         t = matrix[i]->get(j);
         for (j = n; j >= i; j--)
             t /= d;
-        for (j = i + 1; j<n; j++)
-        {
+        for (j = i + 1; j < n; j++) {
             d = matrix[j]->get(i);
             r = matrix[j]->get(k);
             for (k = n; k >= i; k--)
@@ -186,13 +155,12 @@ int Matrix::Gauss(int n, int m) {
         }
     }
     xx[n - 1] = matrix[n - 1]->get(n);
-    for (i = n - 2; i >= 0; i--)
-    {
+    for (i = n - 2; i >= 0; i--) {
         xx[i] = matrix[i]->get(n);
-        for (j = i + 1; j<n; j++)
+        for (j = i + 1; j < n; j++)
             xx[i] -= matrix[i]->get(j) * xx[j];
     }
-    for (i = 0; i<n; i++)
-       cout << xx[i] << " ";
-       cout << endl;
+    for (i = 0; i < n; i++)
+        cout << xx[i] << " ";
+    cout << endl;
 }
